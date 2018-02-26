@@ -8,17 +8,18 @@ public class Home : MonoBehaviour
     public int health = 5000;
     public int ubgrades = 0;
     public int state = 0;
-    [SerializeField]private string loadLevel;
+    [SerializeField]
+    private string loadLevel;
     public GameObject home;
 
     private void Start()
     {
-        
+       
     }
 
     private void Update()
     {
-        if (health == 0);
+        if (health <= 0)
             SceneManager.LoadScene(loadLevel);
             
     }
