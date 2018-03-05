@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerControler : MonoBehaviour {
     public float moveSpeed = 3;
-    float vert, hor, mouseX, MouseY;
+    private float vert, hor, mouseX, MouseY, angleX, angleY;
     private Rigidbody rigidbody;
-    public float mouseX, mouseY;
+    public float mousesensX, mousesensY;
     // Use this for initialization
     void Start () {
         rigidbody = GetComponent<Rigidbody>();
