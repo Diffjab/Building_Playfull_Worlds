@@ -3,9 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Node2
-  - Enemy
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -15,10 +13,10 @@ TagManager:
   - UI
   - 
   - 
-  - mini map
-  - 
-  - 
-  - 
+  - Floor
+  - Shootable
+  - LightMask
+  - Invisible
   - 
   - 
   - 
