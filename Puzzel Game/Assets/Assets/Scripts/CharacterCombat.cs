@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterCombat : MonoBehaviour {
+// public class CharacterCombat : MonoBehaviour {
 
-    CharacterStats myStats;
+    //CharacterStats myStats;
 
-    void Start()
-    {
-        myStats = GetComponent<CharacterStats>(); 
-    }
+    //void Start()
+   // {
+        //myStats = GetComponent<CharacterStats>(); 
+    //}
 
-    public void Attack (CharacterStats targetStats)
-    {
-        targetStats.TakeDamage(myStats);
-    }
-}
+    //public void Attack (CharacterStats targetStats)
+    //{
+        //targetStats.TakeDamage(myStats);
+    //}
+//}

@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStats : MonoBehaviour {
+public class EnemyStats : MonoBehaviour
+{
 
-	public override void Die()
+    public int EnemyHealth = 10;
+    public int EnemyArmor = 10;
+
+    void Update()
     {
-        base.Die();
+        if (EnemyHealth <= 0)
+        {
 
-        //add ragdoll effect / death animation
+            Destroy(gameObject);
+            //Instantiate<GameObject>();
+        }
 
-        / Destroy(gameObject);
+
     }
-
-
 }

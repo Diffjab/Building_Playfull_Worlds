@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Color_Chance : MonoBehaviour {
-    public MeshRenderer renderer;
+    public MeshRenderer render;
     public Color newColor;
 	// Use this for initialization
 	void Start () {
@@ -14,7 +14,7 @@ public class Color_Chance : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            renderer.material.color = newColor;
+            render.material.color = newColor;
 
         }
 	}
