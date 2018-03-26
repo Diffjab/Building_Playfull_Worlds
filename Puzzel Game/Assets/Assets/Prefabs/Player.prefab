@@ -39,6 +39,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4403478830978620}
+  - component: {fileID: 114166692918849200}
+  - component: {fileID: 114649533847763672}
+  - component: {fileID: 114659005951209366}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -117,7 +120,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1168940541431544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.6308165, y: 0.5759611, z: 5.675478}
+  m_LocalPosition: {x: 6.902, y: 0.5759611, z: 5.675478}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4327274339875928}
@@ -267,7 +270,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.431109
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -328,6 +331,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114166692918849200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1168940541431544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12e1d93506c77b147b689ba61b78d565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1402299366625692}
+  playerHealth: 100
 --- !u!114 &114627141250271168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -345,7 +361,7 @@ MonoBehaviour:
   m_RunstepLenghten: 0.7
   m_JumpSpeed: 4
   m_StickToGroundForce: 10
-  m_GravityMultiplier: 2
+  m_GravityMultiplier: 1
   m_MouseLook:
     XSensitivity: 2
     YSensitivity: 2
@@ -430,6 +446,31 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+--- !u!114 &114649533847763672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1168940541431544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f37d2ceec76f3746b1c8d47cdad4095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1168940541431544}
+--- !u!114 &114659005951209366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1168940541431544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d37b2d1a0f1d404b97784a7a6105730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 100
+  currentHealth: 0
 --- !u!124 &124293010487862860
 Behaviour:
   m_ObjectHideFlags: 1
@@ -446,7 +487,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.79
+  m_Radius: 0.73
   m_Height: 2.12
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

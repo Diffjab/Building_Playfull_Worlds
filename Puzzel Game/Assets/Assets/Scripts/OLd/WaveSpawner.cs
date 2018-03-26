@@ -1,8 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
+
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -12,22 +11,25 @@ public class WaveSpawner : MonoBehaviour
     private float countdown = 2f;
     private int waveNumber = 0;
     public Text WaveCoundownText;
-
+    
     void Update()
     {
-        if (countdown <= 0f)
+        if (countdown <= 0f && waveNumber < 2)
         {
-            StartCoroutine (SpawnWave());
+
+            StartCoroutine(SpawnWave());
             countdown = timeBetweenWaves;
 
+        }else if(waveNumber == 2)
+        {
+            WaveCoundownText.enabled = false;
+
         }
 
-        countdown -= Time.deltaTime;
+        
         WaveCoundownText.text = Mathf.Round(countdown).ToString();
-        if (waveNumber == 10)
-        {
-            StopCoroutine(SpawnWave());
-        }
+        countdown -= Time.deltaTime;
+
 
     }
 

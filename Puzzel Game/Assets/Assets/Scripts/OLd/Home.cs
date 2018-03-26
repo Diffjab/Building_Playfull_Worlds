@@ -1,15 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Home : MonoBehaviour {
 
-    public int HealthHome;
-
+    public int HealthHome = 500;
+    public int currenthealth;
+    public int damage;
     void Awake()
     {
-        HealthHome = 500;
+        currenthealth = HealthHome;
     }
     void Update()
     {
@@ -17,5 +19,9 @@ public class Home : MonoBehaviour {
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+    }
+        internal void DoDamage(GameObject gameObject, int damage)
+    {
+        currenthealth -= damage;
     }
 }

@@ -9,48 +9,39 @@ public class EnemyController : MonoBehaviour {
     public float lookRadius = 10f;
 
     Transform target;
-    NavMeshAgent agent;
-    Transform player;               // Reference to the player's position.
-    PlayerHealth playerHealth;      // Reference to the player's health.
-    EnemyHealth enemyHealth;        // Reference to this enemy's health.
-    NavMeshAgent nav;               // Reference to the nav mesh agent.
+    NavMeshAgent nav;           
+    public int enemyHealth = 100;
+    public int enemycurrentHealth;
 
+    
 
     void Awake()
     {
-        // Set up the references.
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        playerHealth = player.GetComponent<PlayerHealth>();
-        enemyHealth = GetComponent<EnemyHealth>();
+
+        enemycurrentHealth = enemyHealth;
         nav = GetComponent<NavMeshAgent>();
     }
-    void start()
+    
+    public void OnHit(Collider col)
     {
-        agent = GetComponent<NavMeshAgent>();
-        target = PlayerManager.instance.player.transform;
+        enemycurrentHealth = -10;
     }
+
 
     void Update()
     {
-        // If the enemy and the player have health left...
-        if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
+        if (enemycurrentHealth <= 0)
         {
-            // ... set the destination of the nav mesh agent to the player.
-            nav.SetDestination(player.position);
+            Destroy(gameObject);
         }
-        // Otherwise...
-        else
-        {
-            // ... disable the nav mesh agent.
-            nav.enabled = false;
-        }
+        
         float distance = Vector3.Distance(target.position, transform.position);
 
         if (distance <= lookRadius)
         {
-        agent.SetDestination(target.position);
+        nav.SetDestination(target.position);
 
-        if (distance <= agent.stoppingDistance)
+        if (distance <= nav.stoppingDistance)
         {
         FaceTarget();
 
@@ -62,14 +53,15 @@ public class EnemyController : MonoBehaviour {
          Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
          transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
         }
-    }
+    
 
 
-    //void OnDrawGizmosSelected()
-    //{
-    //Gizmos.color = Color.red;
-    //Gizmos.DrawSphere(transform.position, lookRadius);
-    //}
+        void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(transform.position, lookRadius);
+        }
+}
 
 
 
