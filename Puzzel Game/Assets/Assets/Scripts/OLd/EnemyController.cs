@@ -34,20 +34,27 @@ public class EnemyController : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        
-        float distance = Vector3.Distance(target.position, transform.position);
+
+        float distance = Distance();
 
         if (distance <= lookRadius)
         {
-        nav.SetDestination(target.position);
+            nav.SetDestination(target.position);
 
-        if (distance <= nav.stoppingDistance)
-        {
-        FaceTarget();
+            if (distance <= nav.stoppingDistance)
+            {
+                FaceTarget();
 
+            }
         }
-        } }
-        void FaceTarget()
+    }
+
+    private float Distance()
+    {
+        return Vector3.Distance(target.position, transform.position);
+    }
+
+    void FaceTarget()
         {
          Vector3 direction = (target.position - transform.position).normalized;
          Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
