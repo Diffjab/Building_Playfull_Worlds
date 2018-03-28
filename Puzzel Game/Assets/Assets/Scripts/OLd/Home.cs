@@ -20,7 +20,7 @@ public class Home : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
-        internal void DoDamage(GameObject gameObject, int damage)
+    internal void DoDamage(GameObject gameObject, int damage)
     {
         currenthealth -= damage;
     }

@@ -15,6 +15,7 @@ public class AI : MonoBehaviour {
     public float senseRange = 10;
 
     private NavMeshAgent agent;
+
     private Home target;
     private float coolDown;
     private float distanceToTarget;
@@ -41,8 +42,9 @@ public class AI : MonoBehaviour {
             Collider[] cols = Physics.OverlapSphere(transform.position, senseRange);
             foreach (Collider c in cols)
             {
+                print(c);
                 if (c.gameObject == gameObject) { continue; }
-                Home hp = c.gameObject.GetComponent<Home>();
+                Home hp = c.gameObject.GetComponentInParent<Home>();
                 if (hp != null)
                 {
                     Debug.Log("Health found!");
@@ -59,10 +61,12 @@ public class AI : MonoBehaviour {
                 currentState = State.Idle;
             }
 
-        }else{
+        }
+        else {
             distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
             if(distanceToTarget > senseRange)
             {
+                agent.SetDestination(transform.position);
                 target = null;
             }
         }
@@ -94,6 +98,10 @@ public class AI : MonoBehaviour {
                 break;
             case State.Idle:
 
+                if (distanceToTarget < senseRange)
+                {
+                    currentState = State.Move;
+                }
                 //if we are close pick a new position to walk to
                 if (agent.remainingDistance > agent.stoppingDistance)
                 {
@@ -103,11 +111,6 @@ public class AI : MonoBehaviour {
                 {
                     agent.SetDestination(transform.position + new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5)));
                 }
-                if (distanceToTarget < senseRange)
-                {
-                    currentState = State.Move;
-                }
-
 
                 break;
             case State.Move:
