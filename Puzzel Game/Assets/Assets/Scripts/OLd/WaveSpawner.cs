@@ -14,13 +14,13 @@ public class WaveSpawner : MonoBehaviour
     
     void Update()
     {
-        if (countdown <= 0f && waveNumber < 2)
+        if (countdown <= 0f && waveNumber < 4)
         {
 
             StartCoroutine(SpawnWave());
             countdown = timeBetweenWaves;
 
-        }else if(waveNumber == 2)
+        }else if(waveNumber == 4)
         {
             WaveCoundownText.enabled = false;
 

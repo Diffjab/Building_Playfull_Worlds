@@ -51,7 +51,7 @@ namespace Default
                 fadePanel.color = Color.Lerp(Color.clear, blackColor, t);
                 yield return null;
             }
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(3);
         }
     }
 }

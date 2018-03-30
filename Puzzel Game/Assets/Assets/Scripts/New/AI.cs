@@ -109,7 +109,7 @@ public class AI : MonoBehaviour {
                 }
                 else
                 {
-                    agent.SetDestination(transform.position + new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5)));
+                    agent.SetDestination(transform.position + new Vector3(Random.Range(-15, 15), 0, Random.Range(-5, 5)));
                 }
 
                 break;
