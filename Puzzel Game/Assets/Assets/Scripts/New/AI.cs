@@ -42,7 +42,7 @@ public class AI : MonoBehaviour {
             Collider[] cols = Physics.OverlapSphere(transform.position, senseRange);
             foreach (Collider c in cols)
             {
-                print(c);
+                
                 if (c.gameObject == gameObject) { continue; }
                 Home hp = c.gameObject.GetComponentInParent<Home>();
                 if (hp != null)
