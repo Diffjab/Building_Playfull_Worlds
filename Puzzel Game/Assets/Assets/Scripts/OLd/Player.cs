@@ -3,11 +3,14 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 namespace Default
 {
 
     public class Player : MonoBehaviour
     {
+        public AudioClip Shot;
+        public AudioSource source;
         public GameObject cam;
         public int playerHealth = 100;
         public int currentHealth;
@@ -18,6 +21,8 @@ namespace Default
         {
             currentHealth = playerHealth;
         }
+
+
         
 
         
@@ -31,6 +36,7 @@ namespace Default
             }
             if (Input.GetMouseButtonDown(0))
             {
+                
                 RaycastHit hit;
                 if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
                 {
@@ -46,6 +52,7 @@ namespace Default
                         
                     }
                 }
+                source.PlayOneShot(Shot);
             }
         }
         IEnumerator LoseTheGame()

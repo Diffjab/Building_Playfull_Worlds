@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.AI;
 namespace Default
 {
 
@@ -13,6 +14,9 @@ namespace Default
         public Image fadePanel;
         public Color blackColor;
         // Use this for initialization
+
+             
+
         void Start()
         {
             heads = new List<Collider>();
@@ -44,7 +48,7 @@ namespace Default
         IEnumerator WinTheGame()
         {
             float t = 0;
-            while (t <= 1)
+            while (t <= 2)
             {
 
                 t += Time.deltaTime;

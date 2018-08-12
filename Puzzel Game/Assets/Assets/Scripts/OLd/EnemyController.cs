@@ -17,11 +17,13 @@ public class EnemyController : MonoBehaviour {
 
     void Awake()
     {
-
+        target = GameObject.FindGameObjectWithTag("Target").GetComponent<Transform>();
         enemycurrentHealth = enemyHealth;
         nav = GetComponent<NavMeshAgent>();
     }
+
     
+
     public void OnHit(Collider col)
     {
         enemycurrentHealth = -10;
@@ -33,9 +35,10 @@ public class EnemyController : MonoBehaviour {
         if (enemycurrentHealth <= 0)
         {
             Destroy(gameObject);
+            return;
         }
 
-        float distance = Distance();
+        float distance = Afstand();
 
         if (distance <= lookRadius)
         {
@@ -48,11 +51,11 @@ public class EnemyController : MonoBehaviour {
             }
         }
     }
-
-    private float Distance()
+    private float Afstand()
     {
         return Vector3.Distance(target.position, transform.position);
     }
+
 
     void FaceTarget()
     {
@@ -60,8 +63,8 @@ public class EnemyController : MonoBehaviour {
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
-    
 
+    
 
     void OnDrawGizmosSelected()
     {

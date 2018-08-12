@@ -5,22 +5,23 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public int Waves;
     public Transform EnemyPrefab;
     public Transform Spawner;
     public float timeBetweenWaves = 5f;
     private float countdown = 2f;
-    private int waveNumber = 0;
+    public int waveNumber = 0;
     public Text WaveCoundownText;
     
     void Update()
     {
-        if (countdown <= 0f && waveNumber < 4)
+        if (countdown <= 0f && waveNumber < Waves)
         {
 
             StartCoroutine(SpawnWave());
             countdown = timeBetweenWaves;
 
-        }else if(waveNumber == 4)
+        }else if(waveNumber == Waves)
         {
             WaveCoundownText.enabled = false;
 
